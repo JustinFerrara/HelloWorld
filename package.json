@@ -1,0 +1,26 @@
+{
+  "name": "HelloWorld",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo Error: \"No test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Justin Ferrara",
+  "dependencies": {
+    "coffee-script": "^1.12.2",
+    "coffeelint": "^1.16.0",
+    "cson": "^4.0.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "fs-promise": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-coffeelint": "0.0.16",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-express-server": "^0.5.3",
+    "grunt-sass": "^2.0.0"
+  }
+}

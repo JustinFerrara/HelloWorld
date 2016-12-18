@@ -1,0 +1,17 @@
+<main class="content home">
+	<ul>
+	{{#each files}}
+		<li>
+		{{#if isImage}}
+			<img src="{{ path }}" style="max-width: 200px;" />
+		{{else}}
+			{{#if isDirectory}}
+				<a href="{{ path }}">{{ name }}</a>
+			{{else}}
+				{{ name }}		
+			{{/if}}
+		{{/if}}
+		</li>
+	{{/each}}
+	</ul>
+</main>

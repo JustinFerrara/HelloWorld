@@ -1,0 +1,38 @@
+# coffeelint.cson
+# CoffeeLint configuration settings.
+arrow_spacing:
+  level: 'error'
+braces_spacing:
+  spaces: 0
+  level: 'error'
+colon_assignment_spacing:
+  spacing:
+    left: 0
+    right: 1
+  level: 'error'
+cyclomatic_complexity:
+  value: 16
+  level: 'error'
+ensure_comprehensions:
+  level: 'error'
+indentation:
+  value: 2
+  level: 'error'
+max_line_length:
+  value: 120,
+  level: 'ignore'
+  limitComments: yes
+no_trailing_whitespace:
+  level: 'error'
+no_empty_param_list:
+  level: 'error'
+no_nested_string_interpolation:
+  level: 'error'
+no_unnecessary_double_quotes:
+  level: 'error'
+no_stand_alone_at:
+  level: 'error'
+prefer_english_operator:
+  level: 'warn'
+space_operators:
+  level: 'error'
