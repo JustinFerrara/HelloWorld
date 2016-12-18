@@ -1,0 +1,42 @@
+=fill($name, $color)
+  &.color-#{$name}
+    path, circle, rect, ellipse, line, polyline, polygon
+      fill: $color
+
+.icon
+  border: none
+  background: none
+  outline: none
+  line-height: 1px
+  display: inline-block
+
+.mobile-only .icon
+  +desktop-narrow
+    display: none
+
+.desktop-only .icon
+  display: none
+  +desktop-narrow
+    display: inline-block
+
+
+.icon-fansided svg
+  height: 18px
+  width: 80px
+
+.icon-hamburger, .icon-close, .icon-search, .icon-facebook, .icon-instagram, .icon-twitter, .icon-google, .icon-email, .icon-whatsapp, .icon-sms,
+.icon-more, .icon-up, .icon-expand, .icon-add-icon, .icon-remove-icon, .icon-clear-input
+  +fill('white', $white)
+  cursor: pointer
+
+// Promo bucket icons
+.icon-app-store, .icon-google-play
+  width: 145px
+  height: 44px
+  background-size: 100%
+  background-repeat: no-repeat
+.icon-easy-read, .icon-personalized, .icon-fast
+  width: 40px
+  height: 40px
+  background-size: 100%
+  background-repeat: no-repeat

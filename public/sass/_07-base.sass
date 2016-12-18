@@ -1,0 +1,198 @@
+html
+  height: 100%
+
+body
+  min-height: 100%
+  height: 100%
+  margin: 0
+  overflow-x: hidden
+  min-width: 320px
+
+.admin-tabs
+  height: 30px
+  top: 95px
+  position: fixed
+  z-index: 466
+  text-transform: capitalize
+  left: 0
+  right: 0
+  background: white
+
+html, body
+  +prefix('text-size-adjust', '100%')
+
+body.body
+  margin: 0 !important
+
+.content
+  position: relative
+  width: 100%
+  padding-left: 5px
+  padding-right: 5px
+  +desktop-narrow
+    padding-left: 0
+    padding-right: 0
+
+.section-container
+  max-width: 100%
+  margin: 0 auto
+  position: relative
+  +clearfix
+  +desktop-narrow
+    width: 1170px
+
+.content > .content
+  padding-top: 6px
+  +desktop-narrow
+    padding-left: 50px
+    padding-right: 50px
+
+.content > .collection
+  &:before
+    content: ' '
+    border-top: 1px solid #cdcdcd
+    position: absolute
+    margin-left: 54px
+    margin-right: 54px
+    top: 0
+    left: 0
+    right: 0
+
+.full-width
+  padding-left: 0
+  padding-right: 0
+
+.row
+  +clearfix
+
+.left
+  float: left
+
+.right
+  float: right
+
+.inline
+  display: inline
+
+.inline-block
+  display: inline-block
+
+.clearfix
+  +clearfix
+
+
+.overlay
+  display: block
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: $blue_darker
+  opacity: 0
+  z-index: $index-4
+  +prefix('transition', 'opacity 400ms')
+  &:hover
+    opacity: .8
+
+
+.expand .overlay, .hamburger-active .overlay
+  display: block
+
+.hamburger-active .overlay
+  top: 0
+
+.article .overlay
+  top: 0
+
+
+/** Special Type Treatments */
+strong, b
+  font-weight: bold!important
+  +font-roboto
+
+em, i
+  font-style: italic!important
+
+small
+  font-size: smaller
+
+sup, .super
+  @include prefix('font-variant-position', 'super')
+  @include prefix('font-feature-settings', 'sups')
+  vertical-align: super
+  font-size: smaller
+
+sub, .sub
+  @include prefix('font-variant-position', 'sub')
+  @include prefix('font-feature-settings', 'subs')
+  vertical-align: sub
+  font-size: smaller
+
+.ligature
+  @include prefix('font-variant-ligatures', 'common-ligatures')
+  @include prefix('font-feature-settings', '"liga", "clig"')
+
+.no-ligature
+  @include prefix('font-variant-ligatures', 'no-common-ligatures')
+  @include prefix('font-feature-settings', '"liga" 0, "clig" 0')
+
+.smallcaps
+  font-variant-caps: small-caps
+  @include prefix('font-feature-settings', '"c2sc", "smcp"')
+  @include prefix('font-variant-caps', 'all-small-caps')
+
+.oldstyle
+  @include prefix('font-variant-numeric', 'oldstyle-nums')
+  @include prefix('font-feature-settings', 'onum')
+
+.prop-figures
+  @include prefix('font-variant-numeric', 'proportional-nums')
+  @include prefix('font-feature-settings', 'pnum')
+
+.tab-figures
+  @include prefix('font-variant-numeric', 'tabular-nums')
+  @include prefix('font-feature-settings', 'tnum')
+
+.fraction
+  @include prefix('font-variant-numeric', 'diagonal-fractions')
+  @include prefix('font-feature-settings', 'frac')
+
+.ordinals
+  @include prefix('font-variant-numeric', 'ordinal')
+  @include prefix('font-feature-settings', 'ordn')
+
+.kern
+  @include prefix('font-kerning', 'normal')
+  @include prefix('font-feature-settings', 'kern')
+
+.print-only
+  display: none!important
+
+
+.desktop-only, .desktop
+  display: none
+
+.page-error h1
+  margin-top: 50px
+
+body.windows-app
+  footer.footer
+    display: none!important
+
++min-width(1024px)
+  .mobile-tablet-only
+    display: none!important
+
++desktop-narrow
+  .desktop-only, .desktop
+    display: block!important
+
+  .mobile-only, .mobile
+    display: none!important
+
++mobile-zoom
+  select,
+  textarea,
+  input
+    font-size: 16px

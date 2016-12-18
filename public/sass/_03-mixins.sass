@@ -1,0 +1,133 @@
+/**
+  Adds vendor prefixes to a property
+  - Usage
+    +prefix('box-shadow', '10px')
+  - Output
+    -webkit-box-shadow: 10px
+    -moz-box-shadow: 10px
+    -ms-box-shadow: 10px
+    box-shadow: 10px
+ */
+=prefix($property, $value, $vendors: webkit moz ms)
+  @if $vendors
+    @each $vendor in $vendors
+      #{"-" + $vendor + "-" + $property}: #{$value}
+  #{$property}: #{$value}
+
+
+/**
+  Adds vendor prefixes to a value
+    - Usage:
+        +prefix-value('display', 'flex')
+    - Output:
+        display: -webkit-flex
+        display: -moz-flex
+        display: -ms-flex
+        display: flex
+ */
+=prefix-value($property, $value, $vendors: webkit moz ms)
+  @if $vendors
+    @each $vendor in $vendors
+      #{$property}: #{"-" + $vendor + "-" + $value}
+  #{$property}: #{$value}
+
+/**
+  Adds vendor prefixes for display: flex
+ */
+=display-flex
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-flexbox
+  display: -webkit-flex
+  display: flex
+
+=flex-wrap
+  display: flex
+  flex-wrap: wrap
+  apple-wrap: wrap
+  khtml-wrap: wrap
+  webkit-wrap: wrap
+
+/** Clearfix */
+@mixin clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+/* Background Opacity */
+@mixin background-opacity($color, $opacity: .8)
+  background: $color
+  background-color: rgba($color, $opacity)
+
+/* percentage underline */
+@mixin afterline($width: 96%, $margin: 10px auto, $color: $border_grey, $border-width: 2px)
+  &::after
+    content: ''
+    display: block
+    width: $width
+    border-top: $border-width solid $color
+    margin: $margin
+
+/**  Ellipsis */
+@mixin ellipsis
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+=placeholder($color)
+  &::-webkit-input-placeholder
+    color: $color
+  &:-moz-placeholder /* Firefox 18- */
+    color: $color
+  &::-moz-placeholder /* Firefox 19+ */
+    color: $color
+  &:-ms-input-placeholder
+    color: $color
+
+
+/** Limits a block to n-number of lines */
+=limit-lines($line-height, $lines)
+  display: block
+  display: -webkit-box
+  -webkit-line-clamp: $lines
+  -webkit-box-orient: vertical
+  overflow: hidden
+  text-overflow: ellipsis
+  line-height: $line-height
+  height: $line-height * $lines
+
+=vertical-align($position: relative)
+  position: $position
+  top: 50%
+  +prefix('transform', 'translateY(-50%)')
+
+/** Body Text */
+@mixin body-min-max
+  min-width: 300px
+  max-width: 550px
+
+=hide-text
+  text-indent: 100%
+  white-space: nowrap
+  overflow: hidden
+
+// Background opacity
+=background-opacity($color: $black, $opacity: 0.8)
+  background: $color
+  background: rgba($color, $opacity)
+
+$link-color: #333 !default
+$link-color-active: #55abad !default
+$link-underline-color: $link-color !default
+$link-underline-color-active: $link-color-active !default
+$link-underline-width: 1px !default
+$link-underline-offset: 1px !default
+$breaking-underlines: true !default
+$background-color: #fff
+=underline($color: $link-underline-color, $weight: $link-underline-width, $offset: $link-underline-offset, $link-offset-fix: -10px)
+  position: relative
+  display: inline
+  text-shadow: -1px -1px 0 $background-color, 1px -1px 0 $background-color, -1px 1px 0 $background-color, 1px 1px 0 $background-color
+  background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight))
+  background-position: 0px $link-offset-fix

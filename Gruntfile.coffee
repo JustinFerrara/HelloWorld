@@ -49,86 +49,13 @@ module.exports = (grunt) ->
         options:
           node_env: 'test'
 
-    uglify:
-      dist:
-        options:
-          compress:
-            drop_console: true
-          report: 'min'
-        files: [
-          expand: true,
-          cwd: './public/swimsuit/js'
-          src: ['*.js']
-          dest: './public/swimsuit/js'
-        ]
-
-    cssmin:
-      dist:
-        files: [
-          expand: true,
-          cwd: './public/swimsuit/css'
-          src: ['*.css', '!*.min.css']
-          dest: './public/swimsuit/css'
-          ext: '.min.css'
-        ]
-
-    mochaTest:
-      all:
-        options:
-          timeout: 9000
-          reporter: 'spec'
-          require: 'coffee-script/register'
-          clearRequireCache: true
-        src: ['test/mocha/**/*.coffee']
-
     sass:
       options:
         sourceMap: true
         style: 'compressed'
       dist:
         files:
-          './public/swimsuit/css/style.css': './public/sass/main.sass'
-
-    assemble:
-      options:
-        layout: 'docs/templates/template.hbs'
-        helpers: 'docs/helpers/helpers.coffee'
-        assets: 'docs/assets'
-        data: 'docs/data/*.json'
-      base:
-        files: [
-          cwd: './docs/'
-          dest: './public/styleguide'
-          expand: true
-          src: ['**/*.md']
-        ]
-
-    parker:
-      options:
-        metrics: [
-          'TotalStylesheets'
-          'TotalStylesheetSize'
-          'TotalRules'
-          'TotalSelectors'
-          'TotalIdentifiers'
-          'TotalDeclarations'
-          'SelectorsPerRule'
-          'IdentifiersPerSelector'
-          'SpecificityPerSelector'
-          'TopSelectorSpecificity'
-          'TopSelectorSpecificitySelector',
-          'TotalIdSelectors'
-          'TotalUniqueColours'
-          'TotalImportantKeywords'
-          'TotalMediaQueries'
-        ]
-        file: './docs/style-report.md'
-        usePackage: true
-      src: [ './public/swimsuit/css/*.css' ]
-
-    casperjs:
-      options: {}
-      files: ['test/casper/**/*.coffee']
+          './public/css/style.css': './public/sass/main.sass'
 
     coffeelint:
       all: scriptFiles
@@ -144,8 +71,8 @@ module.exports = (grunt) ->
         entry:
           main: './public/coffee/main.coffee'
         output:
-          path: './public/swimsuit/js/'
-          publicPath: '/swimsuit/js/'
+          path: './public/js/'
+          publicPath: '/js/'
           filename: '[name].js'
         resolve:
           alias:
@@ -180,21 +107,12 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-express-server'
-  grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-webpack'
-  grunt.loadNpmTasks 'grunt-contrib-cssmin'
-  grunt.loadNpmTasks 'grunt-contrib-uglify'
-  grunt.loadNpmTasks 'grunt-mocha-test'
-  grunt.loadNpmTasks 'grunt-casperjs'
   grunt.loadNpmTasks 'grunt-sass'
-  grunt.loadNpmTasks 'grunt-parker'
-  grunt.loadNpmTasks 'grunt-assemble'
 
   # Tasks
-  grunt.registerTask('build-styleguide', ['sass', 'cssmin', 'parker', 'assemble'])
   grunt.registerTask('dev', ['sass', 'build-fe-js-dev', 'express:dev', 'watch'])
   grunt.registerTask('test', ['coffeelint', 'mochaTest', 'express:dev'])
 
   # Helper Tasks
-  grunt.registerTask('build-fe-prod', ['sass', 'webpack', 'uglify', 'cssmin'])
   grunt.registerTask('build-fe-js-dev', ['coffeelint', 'webpack'])

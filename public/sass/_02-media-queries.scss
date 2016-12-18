@@ -1,0 +1,106 @@
+@mixin min-width($pixels)
+{
+  @media (min-width: $pixels)
+  {
+    @content;
+  }
+}
+
+@mixin min-width-1300
+{
+  @media ( min-width: 1300px )
+  {
+    @content;
+  }
+}
+
+@mixin max-width($pixels)
+{
+  @media (max-width: $pixels)
+  {
+    @content;
+  }
+}
+
+@mixin max-height($pixels)
+{
+  @media (max-height: $pixels)
+  {
+    @content;
+  }
+}
+
+@mixin min-width-980
+{
+  @media ( min-width: 980px )
+  {
+    @content;
+  }
+}
+
+@mixin desktop-wide
+{
+  @media ( min-width: 1275px )
+  {
+    @content;
+  }
+}
+
+@mixin desktop-narrow
+{
+  @media ( min-width: 769px )
+  {
+    @content;
+  }
+}
+
+
+@mixin mobile-wide
+{
+  @media ( max-width: 768px )
+  {
+    @content;
+  }
+}
+
+@mixin iphone6
+{
+  @media ( max-device-width: 375px )
+  {
+    @content;
+  }
+}
+
+@mixin mobile-zoom
+{
+  @media screen and (-webkit-min-device-pixel-ratio: 0) 
+  {
+    @content;
+  }
+}
+
+//
+//@mixin desktop-normal
+//{
+//  @media ( min-width: 980px )
+//  {
+//    @content;
+//  }
+//}
+//
+//
+//@mixin desktop-medium
+//{
+//  @media ( min-width: 1100px)
+//  {
+//    @content;
+//  }
+//}
+//
+//@mixin desktop-wide
+//{
+//  @media ( min-width: 1400px )
+//  {
+//    @content;
+//  }
+//}
